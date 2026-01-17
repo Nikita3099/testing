@@ -7,7 +7,7 @@ module.exports = {
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/testing/',
+    publicPath: '/testing/', // <--- для GitHub Pages, замени "testing" на имя репо
     clean: true,
   },
 
@@ -28,7 +28,7 @@ module.exports = {
         test: /\.(png|jpg|jpeg|gif|svg)$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'img/[name][ext]',
+          filename: 'img/[name][ext]', // картинки будут в папке dist/img
         },
       },
     ],
@@ -49,4 +49,6 @@ module.exports = {
   },
 
   resolve: {
-    extensions:
+    extensions: ['.js'],
+  },
+};
