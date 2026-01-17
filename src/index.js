@@ -16,7 +16,7 @@ button.addEventListener('click', () => {
   result.textContent = isValid ? '✅ Карта валидна' : '❌ Карта невалидна';
 
   if (type) {
-    cardImg.src = `./img/${type}.png`; // 'visa.png', 'mastercard.png', 'mir.png'
+    cardImg.src = `./img/${type}.png`;
     cardImg.alt = type;
   } else {
     cardImg.src = '';

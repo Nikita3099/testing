@@ -6,7 +6,7 @@ module.exports = {
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
-    clean: true, // очищает dist при каждой сборке
+    clean: true,
   },
   mode: 'development',
   devServer: {
@@ -28,7 +28,7 @@ module.exports = {
         test: /\.(png|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'img/[name][ext]', // сохраняем картинки в dist/img
+          filename: 'img/[name][ext]',
         },
       },
     ],
