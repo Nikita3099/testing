@@ -7,7 +7,7 @@ module.exports = {
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/testing/', // <--- для GitHub Pages, замени "testing" на имя репо
+    publicPath: '/testing/', // ОБЯЗАТЕЛЬНО для GitHub Pages
     clean: true,
   },
 
@@ -16,19 +16,19 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
+        use: 'babel-loader',
       },
+
       {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
       },
+
       {
         test: /\.(png|jpg|jpeg|gif|svg)$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'img/[name][ext]', // картинки будут в папке dist/img
+          filename: 'img/[name][ext]',
         },
       },
     ],
@@ -46,6 +46,7 @@ module.exports = {
     },
     port: 8080,
     open: true,
+    hot: true,
   },
 
   resolve: {
