@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -7,7 +8,6 @@ module.exports = {
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/testing/', // ОБЯЗАТЕЛЬНО для GitHub Pages
     clean: true,
   },
 
@@ -18,17 +18,15 @@ module.exports = {
         exclude: /node_modules/,
         use: 'babel-loader',
       },
-
       {
-        test: /\.css$/i,
+        test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
-
       {
         test: /\.(png|jpg|jpeg|gif|svg)$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'img/[name][ext]',
+          filename: 'img/[name][ext]',  // все картинки попадут в dist/img/
         },
       },
     ],
@@ -38,18 +36,22 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
+
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: './src/img',
+          to: 'img',
+        },
+      ],
+    }),
   ],
 
   devServer: {
+    port: 8080,
+    open: true,
     static: {
       directory: path.join(__dirname, 'dist'),
     },
-    port: 8080,
-    open: true,
-    hot: true,
-  },
-
-  resolve: {
-    extensions: ['.js'],
   },
 };

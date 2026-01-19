@@ -2,23 +2,23 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Credit Card Validator</title>
 </head>
 <body>
   <div class="container">
     <h1>Credit Card Validator</h1>
 
-    <div class="widget">
-      <div class="logos">
-        <img id="visa" alt="Visa">
-        <img id="mastercard" alt="MasterCard">
-        <img id="mir" alt="Mir">
-      </div>
-
-      <input id="card-input" type="text" placeholder="Введите номер карты">
-      <button id="check-btn">Проверить</button>
-      <div id="result"></div>
+    <!-- Логотипы карт — всегда видны, по умолчанию тусклые -->
+    <div class="logos">
+      <img src="/img/visa.png"       alt="Visa"       class="card-logo" data-type="visa">
+      <img src="/img/mastercard.png" alt="Mastercard" class="card-logo" data-type="mastercard">
+      <img src="/img/mir.png"        alt="Мир"        class="card-logo" data-type="mir">
     </div>
+
+    <input id="card-input" type="text" placeholder="Введите номер карты" maxlength="19">
+    <button id="check-btn">Проверить</button>
+    <p id="result"></p>
   </div>
 </body>
 </html>
